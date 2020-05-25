@@ -153,6 +153,9 @@ func floorcgf(x: CGFloat) -> CGFloat {
     /// Always show controls
     public var alwaysShowControls = false
     
+    /// Always hide controls
+    public var alwaysHideControls = false
+    
     /// Enable grid
     public var enableGrid = true
     
@@ -304,7 +307,7 @@ func floorcgf(x: CGFloat) -> CGFloat {
         pagingScrollView.delegate = nil
         NotificationCenter.default.removeObserver(self)
         releaseAllUnderlyingPhotos(preserveCurrent: false)
-        SDImageCache.shared().clearMemory() // clear memory
+        SDImageCache.shared.clearMemory() // clear memory
     }
 
     private func releaseAllUnderlyingPhotos(preserveCurrent: Bool) {
@@ -1755,7 +1758,13 @@ func floorcgf(x: CGFloat) -> CGFloat {
         setControlsHidden(hidden: false, animated: true, permanent: false)
     }
     
+    @objc func handleSingleTap() {
+        self.delegate?.singleTap(for: self, at: self.currentPhotoIndex)
+        toggleControls()
+    }
+    
     @objc func toggleControls() {
+        guard !(alwaysHideControls && areControlsHidden) else { return }
         setControlsHidden(hidden: !areControlsHidden, animated: true, permanent: false)
     }
     

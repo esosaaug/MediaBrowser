@@ -9,8 +9,7 @@
 import UIKit
 
 /// Required delegate to use MediaBrowser
-@objc
-public protocol MediaBrowserDelegate {
+public protocol MediaBrowserDelegate: class {
     //MARK: Required methods
     
     /**
@@ -105,6 +104,11 @@ public protocol MediaBrowserDelegate {
      Optional protocol for access token
      */
     func accessToken(for url: URL?) -> String?
+    
+    /**
+     Single tap from current item
+     */
+    func singleTap(for mediaBrowser: MediaBrowser, at index: Int)
 }
 
 public extension MediaBrowserDelegate {
@@ -129,4 +133,6 @@ public extension MediaBrowserDelegate {
     func gridCellSize() -> CGSize { return CGSize(width: 128, height: 128) }
 
     func accessToken(for url: URL?) -> String? { return nil }
+    
+    func singleTap(for mediaBrowser: MediaBrowser, at index: Int) { }
 }

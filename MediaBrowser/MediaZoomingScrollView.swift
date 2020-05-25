@@ -408,7 +408,7 @@ class MediaZoomingScrollView: UIScrollView, UIScrollViewDelegate, TapDetectingIm
     
     //MARK: - Tap Detection
     func handleSingleTap(touchPoint: CGPoint) {
-        mediaBrowser.perform(#selector(MediaBrowser.toggleControls), with: nil, afterDelay: 0.2)
+        mediaBrowser.perform(#selector(MediaBrowser.handleSingleTap), with: nil, afterDelay: 0.2)
     }
     
     func handleDoubleTap(touchPoint: CGPoint) {

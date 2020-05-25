@@ -4,7 +4,7 @@ target 'MediaBrowser' do
   use_frameworks!
   
   pod "UICircularProgressRing"
-  pod "SDWebImage"
+  pod "SDWebImage", '~> 5.8'
 
 end
 
